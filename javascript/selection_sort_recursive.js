@@ -1,13 +1,15 @@
 function selectionSortRecursive(arr) {
-  // type your code here
-}
+  if (arr.length === 0) {
+    return [];
+  }
 
-if (require.main === module) {
-  // add your own tests in here
-  console.log("Expecting: [-1, 2, 3, 5]");
-  console.log("=>", selectionSortRecursive([3, -1, 5, 2]));
+  const min = Math.min(...arr);
+  const idx = arr.indexOf(min);
+  arr.splice(idx, 1);
 
-  console.log("");
+  const result = selectionSortRecursive(arr);
+  result.unshift(min);
+  return result;
 }
 
 module.exports = selectionSortRecursive;
